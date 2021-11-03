@@ -23,6 +23,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         wallJumpFromLeft = 1
         wallJumpFromRight = 0
         directions = 9
+        info.startCountdown(1)
     } else if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy += -120
         Hero.x += 20
@@ -30,6 +31,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         wallJumpFromLeft = 0
         wallJumpFromRight = 1
         directions = 3
+        info.startCountdown(1)
     }
     if (Long_Jump == 1) {
         Hero.vy += -60
@@ -138,15 +140,13 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    if (WallStick == 1 && (wallJumpFromRight == 1 && Hero.isHittingTile(CollisionDirection.Right) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy = 0
         // 20 if you wanna more realisticd d
         Hero.ay = 0
-        info.startCountdown(1)
     } else if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy = 0
         Hero.ay = 0
-        info.startCountdown(1)
     } else if (Hero.isHittingTile(CollisionDirection.Bottom)) {
         Hero.vx = 0
     } else {
