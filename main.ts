@@ -16,20 +16,20 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         wallJumpFromLeft = 1
         wallJumpFromRight = 1
         WallStick = 1
-    } else if (WallStick == 1 && (wallJumpFromRight == 1 && Hero.isHittingTile(CollisionDirection.Right) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    } else if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Right) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy += -120
         Hero.x += -20
         Hero.vx += -60
-        wallJumpFromLeft = 1
-        wallJumpFromRight = 0
+        wallJumpFromLeft = 0
+        wallJumpFromRight = 1
         directions = 9
         info.startCountdown(1)
-    } else if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    } else if (WallStick == 1 && (wallJumpFromRight == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy += -120
         Hero.x += 20
         Hero.vx += 60
-        wallJumpFromLeft = 0
-        wallJumpFromRight = 1
+        wallJumpFromLeft = 1
+        wallJumpFromRight = 0
         directions = 3
         info.startCountdown(1)
     }
@@ -67,8 +67,8 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     directions = 9
 })
 let directions = 0
-let wallJumpFromLeft = 0
 let wallJumpFromRight = 0
+let wallJumpFromLeft = 0
 let WallStick = 0
 let Level = 0
 let Long_Jump = 0
@@ -140,11 +140,11 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    if (WallStick == 1 && (wallJumpFromRight == 1 && Hero.isHittingTile(CollisionDirection.Right) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Right) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy = 0
         // 20 if you wanna more realisticd d
         Hero.ay = 0
-    } else if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    } else if (WallStick == 1 && (wallJumpFromRight == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
         Hero.vy = 0
         Hero.ay = 0
     } else if (Hero.isHittingTile(CollisionDirection.Bottom)) {
