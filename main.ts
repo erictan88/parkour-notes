@@ -16,7 +16,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         wallJumpFromLeft = 1
         wallJumpFromRight = 1
         WallStick = 1
-    } else if (WallStick == 1 && (wallJumpFromLeft == 1 && Hero.isHittingTile(CollisionDirection.Right) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    } else if (WallStick == 1 && (!(Hero.isHittingTile(CollisionDirection.Bottom)) && Hero.isHittingTile(CollisionDirection.Right))) {
         Hero.vy += -120
         Hero.x += -20
         Hero.vx += -60
@@ -24,7 +24,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         wallJumpFromRight = 1
         directions = 9
         info.startCountdown(1)
-    } else if (WallStick == 1 && (wallJumpFromRight == 1 && Hero.isHittingTile(CollisionDirection.Left) && !(Hero.isHittingTile(CollisionDirection.Bottom)))) {
+    } else if (WallStick == 1 && (!(Hero.isHittingTile(CollisionDirection.Bottom)) && Hero.isHittingTile(CollisionDirection.Left))) {
         Hero.vy += -120
         Hero.x += 20
         Hero.vx += 60
